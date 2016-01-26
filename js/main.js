@@ -1,3 +1,5 @@
+var currentPage = 1;
+
 var getUrl = function(page) {
     var searchQuery = jQuery('#input').val();
     var encodedSearchQuerty = encodeURIComponent(searchQuery);
@@ -5,13 +7,13 @@ var getUrl = function(page) {
     return url;
 };
 
-var search = function(page, needToUpdatePaging) {
+var search = function(page) {
     var startTime = new Date().getTime();
 
     $.getJSON(getUrl(page), function(data) {
         jQuery('#results').empty();
         var items = data.Result;
-
+        var total = data.ReturnedCount;
         $.each(items, function(item) {
             var itDiv =
                 '<div class="item"><div class="ui mini image"><a target="_blank" href="' + items[item].link + '"><i class="download icon rounded huge"></i></a></div>'
@@ -35,6 +37,11 @@ var search = function(page, needToUpdatePaging) {
             jQuery('#results').append(itDiv);
         });
         var requestTime = new Date().getTime() - startTime;
+        jQuery('#resultNum').text(total);
+        jQuery('#elapsed').text(requestTime/1000);
+        jQuery('#page').text(currentPage + '/' + Math.ceil(total/50));
+        jQuery('#stats').slideDown();
+
     });
 };
 var doSearch = function(p) {

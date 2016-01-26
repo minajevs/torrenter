@@ -28,10 +28,38 @@
     <div class="ui two column centered grid">
         <div class="row">
             <div class="ui column stackable center aligned page grid">
-                <div class="column twelve wide">
+                <div class="column fifteen wide">
                     <div class="ui action input centered fluid">
                         <input type="text" placeholder="Введите ваш поисковой запрос" id="input">
                         <button class="ui button" id="search">Search</button>
+                    </div>
+                    <div class="ui segment" hidden="hidden" id="stats">
+                        <div class="ui statistics mini three">
+                            <div class="statistic">
+                                <div class="value" id="resultNum">
+
+                                </div>
+                                <div class="label">
+                                    Results
+                                </div>
+                            </div>
+                            <div class="statistic">
+                                <div class="value" id="elapsed">
+
+                                </div>
+                                <div class="label">
+                                    Seconds elapsed
+                                </div>
+                            </div>
+                            <div class="statistic">
+                                <div class="value" id="page">
+
+                                </div>
+                                <div class="label">
+                                    Page
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
